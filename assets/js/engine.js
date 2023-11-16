@@ -4,10 +4,9 @@ const state = {
     },
     values: {
         emojis: ['🧞', '🧞', '🍄', '🍄', '🦄', '🦄', '👑', '👑', '🪷', '🪷', '🌿', '🌿', '🐚', '🐚', '🧚🏽', '🧚🏽'],
-        openCards: []
-    },
-    actions: {
-        matchChecker: setTimeout(checkMatch, 500)
+        flippedCards: [],
+        matchedCards: [],
+        rounds: 0
     }
 }
 
@@ -26,16 +25,35 @@ function shuffleCards() {
 }
 
 function handleClick() {
-    if (state.values.openCards.length < 2) {
-        this.classList.add('flipped')
-        state.values.openCards.push(this)
-    }
-    if (state.values.openCards.length === 2) {
-        state.actions.matchChecker
+    if (state.values.flippedCards[0] !== this) {
+        if (state.values.flippedCards.length < 2) {
+            this.classList.add('flipped')
+            state.values.flippedCards.push(this)
+        }
+        console.log(state.values.flippedCards)
+        if (state.values.flippedCards.length === 2) {
+            setTimeout(checkMatch, 500)
+        }
     }
 }
 
 function checkMatch() {
+    state.values.rounds++
+
+    if (state.values.flippedCards[0].innerHTML === state.values.flippedCards[1].innerHTML) {
+        state.values.flippedCards[0].classList.add('matched')
+        state.values.flippedCards[1].classList.add('matched')
+        state.values.matchedCards.push(state.values.flippedCards[0])
+        state.values.matchedCards.push(state.values.flippedCards[1])
+    } else {
+        state.values.flippedCards[0].classList.remove('flipped')
+        state.values.flippedCards[1].classList.remove('flipped')
+    }
+    state.values.flippedCards = []
+
+    if (state.values.matchedCards.length === state.values.emojis.length) {
+        alert(`Você venceu com ${state.values.rounds} jogadas!`)
+    }
 }
 
 function main() {

@@ -80,7 +80,7 @@ h2 {
     transform: rotateY(0deg);
 }
 
-.card.flipped::after {
+.card.flipped::after, .card.matched::after {
     transform: rotateY(180deg);
 }
 
