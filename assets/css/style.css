@@ -6,6 +6,8 @@ body {
     align-items: center;
 
     background-color: #955abc;
+
+    user-select: none;
 }
 
 .container {
@@ -56,6 +58,22 @@ h2 {
     background-color: #ffffff;
 
     font-size: 5em;
+
+    transform: rotateY(180deg);
+    transition: 0.5s;
+}
+
+.card::after {
+    position: absolute;
+    inset: 0;
+
+    background: #404040;
+    backface-visibility: hidden;
+
+    content: "";
+
+    transition: 0.25;
+    transform: rotateY(0deg);
 }
 
 .reset {
