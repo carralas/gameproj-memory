@@ -3,7 +3,7 @@ const state = {
         gameBox: document.querySelector('.game')
     },
     values: {
-        emojis: ['🧞', '🧞', '🍄', '🍄', '🦄', '🦄', '👑', '👑', '🪷', '🪷', '🌿', '🌿'],
+        emojis: ['🧞', '🧞', '🍄', '🍄', '🦄', '🦄', '👑', '👑', '🪷', '🪷', '🌿', '🌿', '🐚', '🐚', '🧚🏽', '🧚🏽'],
         openCards: []
     }
 }
@@ -14,7 +14,6 @@ function shuffleCards() {
 
 function setCards() {
     for (let k = 0; k < state.values.emojis.length; k++) {
-        alert(`${k} - ${state.values.emojis[k]}`)
         let card = document.createElement('div')
         card.className = 'card'
         card.innerHTML = state.values.emojis[k]
