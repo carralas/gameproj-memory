@@ -76,6 +76,14 @@ h2 {
     transform: rotateY(0deg);
 }
 
+.card.flipped {
+    transform: rotateY(0deg);
+}
+
+.card.flipped::after {
+    transform: rotateY(180deg);
+}
+
 .reset {
     width: 100%;
 
